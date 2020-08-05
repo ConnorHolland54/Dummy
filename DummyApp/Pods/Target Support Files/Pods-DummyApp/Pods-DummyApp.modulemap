@@ -1,0 +1,6 @@
+framework module Pods_DummyApp {
+  umbrella header "Pods-DummyApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
