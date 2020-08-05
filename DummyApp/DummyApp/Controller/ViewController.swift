@@ -7,12 +7,15 @@
 //
 
 import UIKit
-import CryptoKit
 import FirebaseUI
+import Firebase
+import GoogleSignIn
+
 
 class ViewController: UIViewController {
 
     //MARK: - IBOutlet
+    @IBOutlet weak var googleSignInButton: GIDSignInButton!
     
     //MARK: - Variables
     
@@ -20,6 +23,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.signIn()
     }
     
     //MARK: - IBActions
