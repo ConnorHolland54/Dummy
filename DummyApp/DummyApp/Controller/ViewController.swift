@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import FirebaseUI
 import Firebase
 import GoogleSignIn
+
 
 class ViewController: UIViewController {
 
@@ -26,7 +28,21 @@ class ViewController: UIViewController {
     }
     
     //MARK: - IBActions
-    
+    @IBAction func signInWithAppleButtonTapped(_ sender: Any) {
+        if let authUI = FUIAuth.defaultAuthUI() {
+            authUI.providers = [FUIOAuth.appleAuthProvider()]
+            authUI.delegate = self
+        }
+    }
     //MARK: Methods
+   }
 
+extension ViewController: FUIAuthDelegate {
+    
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        if let user = authDataResult?.user{
+            print("\(user.displayName) \(user.email)")
+            
+        }
+    }
 }
